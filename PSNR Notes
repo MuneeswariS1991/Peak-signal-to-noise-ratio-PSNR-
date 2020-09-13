@@ -1,0 +1,25 @@
+Introduction
+The term peak signal-to-noise ratio (PSNR) is an expression for the ratio between the maximum possible value (power) of a signal and the power of distorting noise that affects the quality of its representation.  Because many signals have a very wide dynamic range, (ratio between the largest and smallest possible values of a changeable quantity) the PSNR is usually expressed in terms of the logarithmic decibel scale.
+
+Image enhancement or improving the visual quality of a digital image can be subjective.  Saying that one method provides a better quality image could vary from person to person.   For this reason, it is necessary to establish quantitative/empirical measures to compare the effects of image enhancement algorithms on image quality.
+ 
+Using the same set of tests images, different image enhancement algorithms can be compared systematically to identify whether a particular algorithm produces better results. 
+
+Use as an Image Quality Metric:
+The mean squared error (MSE) for our practical purposes allows us to compare the “true” pixel values of our original image to our degraded image.   The MSE represents the average of the squares of the "errors" between our actual image and our noisy image. The error is the amount by which the values of the original image differ from the degraded image.
+
+The proposal is that the higher the PSNR, the better degraded image has been reconstructed to match the original image and the better the reconstructive algorithm.  This would occur because we wish to minimize the MSE between images with respect the maximum signal value of the image.
+
+The metric under investigation is the peak-signal-to-noise ratio.  If we can show that an algorithm or set of algorithms can enhance a degraded known image to more closely resemble the original, then we can more accurately conclude that it is a better algorithm.
+
+
+Peak signal-to-noise ratio (PSNR) is the ratio between the maximum possible power of an image and the power of corrupting noise that affects the quality of its representation. To estimate the PSNR of an image, it is necessary to compare that image to an ideal clean image with the maximum possible power.
+
+PSNR is most commonly used to estimate the efficiency of compressors, filters, etc. The larger the value of PSNR, the more efficient is a corresponding compression or filter method.
+
+Computing PSNR for Color Images
+Different approaches exist for computing the PSNR of a color image. Because the human eye is most sensitive to luma information, you can compute the PSNR for color images by converting the image to a color space that separates the intensity (luma) channel, such as YCbCr. The Y (luma), in YCbCr represents a weighted average of R, G, and B. G is given the most weight, again because the human eye perceives it most easily. Compute the PSNR only on the luma channel.
+  
+ When you try to compute the MSE between two identical images, the value will be zero and hence the PSNR will be undefined (division by zero).  The main limitation of this metric is that it relies strictly on numeric comparison and does not actually take into account any level of biological factors of the human vision system such as the structural similarity index. (SSIM)
+
+For colour images, the MSE is taken over all pixels values of each individual channel and is averaged with the number of colour channels.  Another option may be to simply perform the PSNR over a converted luminance or grayscale channel as the eye is generally four times more susceptible to luminance changes as opposed to changes in chrominance.  This approximation is left up to the experimenter. 
